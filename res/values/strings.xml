@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello sample-todo-android-parent!</string>
+    <string name="app_name">Sample Todo Android</string>
+    <string name="all_todos">All</string>
+    <string name="active_todos">Active</string>
+    <string name="completed_todos">Completed</string>
+</resources>
