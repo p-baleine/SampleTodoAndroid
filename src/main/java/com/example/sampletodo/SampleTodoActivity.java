@@ -4,6 +4,7 @@ package com.example.sampletodo;
 import java.util.HashMap;
 
 import roboguice.activity.RoboFragmentActivity;
+import roboguice.inject.InjectResource;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,10 @@ import android.widget.TabHost.TabContentFactory;
 
 public class SampleTodoActivity  extends RoboFragmentActivity
 	implements TabHost.OnTabChangeListener {
+
+	@InjectResource(R.string.all_todos) String allIndicator;
+	@InjectResource(R.string.active_todos) String activeIndicator;
+	@InjectResource(R.string.completed_todos) String completedIndicator;
 		
 	private TabHost mTabHost;
 	private HashMap<String, TabInfo> mapTabInfo = new HashMap<String, TabInfo>();
@@ -80,13 +85,13 @@ public class SampleTodoActivity  extends RoboFragmentActivity
 		mTabHost = (TabHost) findViewById(android.R.id.tabhost);
 		mTabHost.setup();
 		TabInfo tabInfo = null;
-		SampleTodoActivity.addTab(this, this.mTabHost, this.mTabHost.newTabSpec("Tab1").setIndicator("Tab 1"),
+		SampleTodoActivity.addTab(this, this.mTabHost, this.mTabHost.newTabSpec("Tab1").setIndicator(allIndicator),
 				(tabInfo = new TabInfo("Tab1", Tab1Fragment.class, args)));
 		this.mapTabInfo.put(tabInfo.tag, tabInfo);
-		SampleTodoActivity.addTab(this, this.mTabHost, this.mTabHost.newTabSpec("Tab2").setIndicator("Tab 2"),
+		SampleTodoActivity.addTab(this, this.mTabHost, this.mTabHost.newTabSpec("Tab2").setIndicator(activeIndicator),
 				(tabInfo = new TabInfo("Tab2", Tab2Fragment.class, args)));
 		this.mapTabInfo.put(tabInfo.tag, tabInfo);
-		SampleTodoActivity.addTab(this, this.mTabHost, this.mTabHost.newTabSpec("Tab3").setIndicator("Tab 3"),
+		SampleTodoActivity.addTab(this, this.mTabHost, this.mTabHost.newTabSpec("Tab3").setIndicator(completedIndicator),
 				(tabInfo = new TabInfo("Tab3", Tab3Fragment.class, args)));
 		this.mapTabInfo.put(tabInfo.tag, tabInfo);
 		// Default to first tab
